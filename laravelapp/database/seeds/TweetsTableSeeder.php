@@ -11,6 +11,6 @@ class TweetsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+      factory(App\Models\Tweet::class, 100)->create();
     }
 }

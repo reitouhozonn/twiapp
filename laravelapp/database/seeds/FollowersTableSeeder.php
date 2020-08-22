@@ -11,6 +11,6 @@ class FollowersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+      factory(App\Models\Follower::class, 99)->create();
     }
 }
