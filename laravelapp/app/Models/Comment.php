@@ -13,6 +13,12 @@ class Comment extends Model
   *
   * @var array
   */
- protected $fillable = [
-     'text'
-}
+  protected $fillable = [
+          'text'
+      ];
+
+      public function user()
+      {
+          return $this->belongsTo(User::class);
+      }
+  }
