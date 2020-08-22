@@ -28,15 +28,15 @@ class CreateCommentsTable extends Migration
 
             $table->foreign('user_id')
               ->references('id')
-              ->on('useers')
+              ->on('users')
               ->onDelete('cascade')
-              ->onUpdate('cascade')
+              ->onUpdate('cascade');
 
               $table->foreign('tweet_id')
                 ->references('id')
                 ->on('tweets')
                 ->onDelete('cascade')
-                ->onUpdate('cascade')
+                ->onUpdate('cascade');
         });
     }
 

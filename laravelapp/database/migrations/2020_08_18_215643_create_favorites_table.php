@@ -22,7 +22,7 @@ class CreateFavoritesTable extends Migration
             $table->index('user_id');
             $table->index('tweet_id');
 
-            $table->unique(['user_id', 'tweet_id']);
+            $table->unique(['user_id', 'tweet_id',]);
 
             $table->foreign('user_id')
                 ->references('id')

@@ -26,7 +26,7 @@ class CreateTweetsTable extends Migration
 
 
             $table->foreign('user_id')
-              ->reference('id')
+              ->references('id')
               ->on('users')
               ->onDelete('cascade')
               ->onUpdate('cascade');
