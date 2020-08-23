@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Follower::class, function (Faker $faker) {
     return [
-        'following_id' => $faker->randomNumber(),
-        'followed_id' => $faker->randomNumber(),
+        'following_id' => $faker->numberBetween(1, 99),
+        'followed_id' => $faker->numberBetween(1, 99),
     ];
 });
