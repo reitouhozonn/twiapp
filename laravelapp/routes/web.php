@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// ログイン状態
+
+Route::group(['middleware' => 'auth'], function() {
+
+
+    Route::resource('users', 'UsersController', ['onyl' => ['index', 'show', 'edit', 'update']]);
+
+    // フォロー・フォロー解除
+    Route::post('users/{id}/follow', 'UsersController@follow')->name('follow');
+    Route::delete('users/{id}/unfollow', 'UsersController@unfollow')->name('unfollow');
+
+
+});
