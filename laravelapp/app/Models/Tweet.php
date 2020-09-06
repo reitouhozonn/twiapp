@@ -29,4 +29,56 @@ class Tweet extends Model
     {
       return $this->hasMany(Comment::class);
     }
+
+    public function getUserTimeLine(Int $user_id)
+    {
+      return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(50);
+    }
+
+    public function getTweetCount(Int $user_id)
+    {
+      return $this->where('user_id', $user_id)->count();
+    }
+
+  public function getTimeLines(Int $user_id, Array $follow_ids)
+  {
+    $follow_ids[] = $user_id;
+    return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(50);
+  }
+
+  public function getTweet(Int $tweet_id)
+  {
+    return $this->with('user')->where('id', $tweet_id)->first();
+  }
+
+  public function tweetStore(Int $user_id, Array $data)
+  {
+    $this->user_id = $user_id;
+    $this->text = $data['text'];
+    $this->save();
+
+    return;
+  }
+
+
+  public function getEditTweet(Int $user_id, Int $tweet_id)
+  {
+    return $this->where('user_id', $user_id)->where('id', $tweet_id)->first();
+  }
+
+  public function tweetUpdate(Int $tweet_id, Array $data)
+  {
+    $this->id = $tweet_id;
+    $this->text = $data['text'];
+    $this->update();
+
+    return;
+  }
+
+  public function tweetDestroy(Int $user_id, Int $tweet_id)
+  {
+    return $this->where('user_id', $user_id)->where('id', $tweet_id)->delete();
+  }
+
+
 }
