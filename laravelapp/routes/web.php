@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('tweets', 'TweetsController', );
 
-    Route::resource('comments', 'CommentsController', ['only' => ['store']]);
+    Route::resource('comments', 'CommentsController', [
+      'only' => ['store']]);
 
+
+    Route::resource('favorites', 'FavoritesController', [
+      'only' => ['store', 'destroy']]);
 });
