@@ -21,7 +21,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'screen_name' => $faker->unique()->word,
         'name' => $faker->name,
-        'profile_image' => 'https://placehold.jp/50x50.png',
+        'profile_image' => 'faker.jpeg',
         'email' => $faker->unique()->safeEmail,
         // 'email_verified_at' => $faker->dateTime(),
         'password' => Hash::make('1234'),
